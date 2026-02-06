@@ -7,8 +7,6 @@
 ;mov bh, 0       ; page number
 ;int 10h         ; https://en.wikipedia.org/wiki/INT_10H (10h interrupt)
 
-hello: db "Hey! Hello from asm via bios", 0
-
 
 mov si, hello ; move hello content to si register
 print:
@@ -23,8 +21,9 @@ print:
     jmp print
 end:
 
-
 jmp $               ; infinite loop
+
+hello: db "Hey! Hello from asm via bios", 0
 
 times 510-($-$$) db 0       ; MBR 512
 dw 0xaa55                   ; MBR 512
