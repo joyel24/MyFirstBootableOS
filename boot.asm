@@ -16,6 +16,13 @@ print:
     mov bh, 0       ; https://en.wikipedia.org/wiki/INT_10H
     int 10h         ; interrupt https://en.wikipedia.org/wiki/INT_10H
     inc bl          ; change color every character
+
+    mov ah, 0x86
+    mov al, 0
+    mov dx, 0xffff
+    mov cx, 0
+    int 15h
+
     jmp print
 end:
 
