@@ -3,3 +3,6 @@ all: boot.asm
 
 run: all
 	qemu-system-i386 -m 512M -drive file=boot,format=raw
+
+debug: all
+	qemu-system-i386 -m 512M -drive file=boot,format=raw -s -S
