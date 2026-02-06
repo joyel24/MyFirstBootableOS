@@ -3,7 +3,7 @@
 
 mov ah, 0           ; >set video mode https://instrum.org/inter/int1000.htm
 mov al, 0x13        ; >to 13h (640X480 256colors)
-mov bl, 0           ;
+mov bl, 0           ; set color to 0 (invisible black)
 int 10h
 
 mov si, hello ; move hello content to si register
@@ -13,9 +13,9 @@ print:
     cmp al, 0       ; >if al value eq 0
     je end          ; >jump to end
     mov ah, 0xe     ; https://en.wikipedia.org/wiki/INT_10H
-    inc bl          ; change color every character
     mov bh, 0       ; https://en.wikipedia.org/wiki/INT_10H
     int 10h         ; interrupt https://en.wikipedia.org/wiki/INT_10H
+    inc bl          ; change color every character
     jmp print
 end:
 
