@@ -17,16 +17,20 @@ print:
     int 10h         ; interrupt https://en.wikipedia.org/wiki/INT_10H
     inc bl          ; change color every character
 
-    mov ah, 0x86
+    mov ah, 0x86    ; https://en.wikipedia.org/wiki/BIOS_interrupt_call (86h wait for delay)
     mov al, 0
     mov dx, 0xffff
     mov cx, 0
-    int 15h
+    int 15h         ; https://en.wikipedia.org/wiki/BIOS_interrupt_call
 
     jmp print
 end:
 
 jmp $               ; infinite loop
+
+%include "print.asm"
+
+disk_error: db "Cannot read disk", 13, 10, 0
 
 hello: db "Hey! Hello from asm via bios 12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890", 0
 
