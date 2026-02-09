@@ -1,4 +1,7 @@
 *.kate-swp
+*.os
+*.o
+*.bin
 boot
 kernel_rust/
 utils/
