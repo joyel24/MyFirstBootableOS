@@ -1,4 +1,9 @@
+#include "io.h"
+
 void main(void) {
-    *((unsigned char*)0xB8000) = 'N';
-    *((unsigned char*)0xB8001) = 0x0f;
+
+    for(int i=0; i<2332; i++){
+        *((unsigned char*)0xB8000 + i*2) = 'N';
+        *((unsigned char*)0xB8000 + i*2+1) = i;
+    }
 }
